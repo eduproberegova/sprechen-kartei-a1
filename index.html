@@ -3,85 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sprechenkartei</title>
+<title>Sprechenkartei — Deutsch A1/A2</title>
+
+<!-- ✏️ ЗАМІНИ ці посилання на свої після завантаження на GitHub Pages -->
+<meta property="og:title"        content="Sprechenkartei — Deutsch A1/A2">
+<meta property="og:description"  content="25 карток для говоріння німецькою. Клікни на картку — побачиш підказки!">
+<meta property="og:type"         content="website">
+<meta property="og:image"        content="https://ТВІЙ_GITHUB/РЕПО/preview.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url"          content="https://ТВІЙ_GITHUB/РЕПО/">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:image"       content="https://ТВІЙ_GITHUB/РЕПО/preview.png">
+<!-- ✏️ кінець замін -->
+
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:'Instrument Sans',sans-serif;
-  background:#f5f0e8;
-  min-height:100vh;
-  display:flex;flex-direction:column;align-items:center;
-}
-.header{
-  width:100%;background:#fff;
-  padding:2rem 2rem 1.5rem;
-  text-align:center;border-bottom:1.5px solid #e8e0d0;
-}
-.header h1{
-  font-family:'Fraunces',serif;
-  font-size:clamp(1.8rem,4vw,2.8rem);
-  font-weight:700;color:#1a1208;letter-spacing:-0.01em;
-}
+body{font-family:'Instrument Sans',sans-serif;background:#f5f0e8;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.header{width:100%;background:#fff;padding:2rem 2rem 1.5rem;text-align:center;border-bottom:1.5px solid #e8e0d0}
+.header h1{font-family:'Fraunces',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:#1a1208;letter-spacing:-0.01em}
 .header h1 em{font-style:italic;color:#b07d3a}
 .tagline{font-size:0.8rem;color:#9a8e7e;letter-spacing:0.14em;text-transform:uppercase;margin-top:0.4rem}
 .designer{font-size:0.78rem;color:#c8440a;font-weight:500;margin-top:0.35rem;letter-spacing:0.02em}
-.progress-row{
-  display:flex;align-items:center;gap:10px;
-  width:min(460px,90%);margin:1.2rem auto 0;
-}
+.progress-row{display:flex;align-items:center;gap:10px;width:min(460px,90%);margin:1.2rem auto 0}
 .pbar{flex:1;height:3px;background:#e8e0d0;border-radius:3px;overflow:hidden}
 .pfill{height:100%;background:#b07d3a;border-radius:3px;transition:width 0.4s ease}
 .plabel{font-size:0.72rem;color:#9a8e7e;white-space:nowrap}
-.main{
-  flex:1;display:flex;flex-direction:column;
-  align-items:center;padding:2.5rem 1rem 3rem;
-  width:100%;max-width:580px;
-}
-.scene{
-  width:100%;max-width:460px;height:300px;
-  perspective:1100px;cursor:pointer;margin-bottom:2rem;
-}
-.inner{
-  width:100%;height:100%;position:relative;
-  transform-style:preserve-3d;
-  transition:transform 0.6s cubic-bezier(.4,0,.2,1);
-}
+.main{flex:1;display:flex;flex-direction:column;align-items:center;padding:2.5rem 1rem 3rem;width:100%;max-width:580px}
+.scene{width:100%;max-width:460px;height:300px;perspective:1100px;cursor:pointer;margin-bottom:2rem}
+.inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.6s cubic-bezier(.4,0,.2,1)}
 .inner.flip{transform:rotateY(180deg)}
-.face{
-  position:absolute;width:100%;height:100%;
-  backface-visibility:hidden;-webkit-backface-visibility:hidden;
-  border-radius:18px;
-  display:flex;flex-direction:column;
-  justify-content:center;align-items:center;
-  padding:2.5rem 2rem;
-}
-.front{background:#ffffff;border:1.5px solid #e8e0d0;box-shadow:0 4px 24px rgba(26,18,8,0.07)}
+.face{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2.5rem 2rem}
+.front{background:#fff;border:1.5px solid #e8e0d0;box-shadow:0 4px 24px rgba(26,18,8,0.07)}
 .back{background:#1a1208;transform:rotateY(180deg)}
-.question{
-  font-family:'Fraunces',serif;
-  font-size:clamp(1.1rem,3vw,1.4rem);
-  font-weight:700;text-align:center;
-  line-height:1.5;color:#1a1208;
-}
+.question{font-family:'Fraunces',serif;font-size:clamp(1.1rem,3vw,1.4rem);font-weight:700;text-align:center;line-height:1.5;color:#1a1208}
 .tap-hint{font-size:0.65rem;color:#c8b89a;margin-top:1.4rem;display:flex;align-items:center;gap:4px}
 .hints{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
-.hint-chip{
-  font-size:0.78rem;color:#e8c87a;
-  background:rgba(232,200,122,0.12);
-  border:1px solid rgba(232,200,122,0.22);
-  padding:5px 12px;border-radius:8px;
-  font-family:'Fraunces',serif;font-style:italic;
-}
+.hint-chip{font-size:0.78rem;color:#e8c87a;background:rgba(232,200,122,0.12);border:1px solid rgba(232,200,122,0.22);padding:5px 12px;border-radius:8px;font-family:'Fraunces',serif;font-style:italic}
 .controls{display:flex;gap:10px;align-items:center}
-.btn{
-  font-family:'Instrument Sans',sans-serif;
-  font-size:0.82rem;font-weight:500;
-  padding:10px 24px;border-radius:100px;
-  border:1.5px solid #d9d0c0;
-  background:#fff;color:#5a4e3e;cursor:pointer;
-  transition:all 0.18s;
-}
+.btn{font-family:'Instrument Sans',sans-serif;font-size:0.82rem;font-weight:500;padding:10px 24px;border-radius:100px;border:1.5px solid #d9d0c0;background:#fff;color:#5a4e3e;cursor:pointer;transition:all 0.18s}
 .btn:hover{border-color:#b07d3a;color:#b07d3a}
 .btn-main{background:#1a1208;color:#f5f0e8;border-color:#1a1208}
 .btn-main:hover{background:#2e2010;border-color:#2e2010;color:#f5f0e8}
@@ -95,21 +56,12 @@ body{
 .done-icon{font-size:2.5rem;color:#b07d3a}
 .done-title{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:700;color:#1a1208}
 .done-sub{color:#9a8e7e;font-size:0.88rem;line-height:1.7}
-.footer{
-  width:100%;padding:1rem 2rem;
-  border-top:1.5px solid #e8e0d0;background:#fff;
-  display:flex;align-items:center;justify-content:space-between;
-  font-size:0.72rem;color:#9a8e7e;
-}
-@keyframes cardIn{
-  from{opacity:0;transform:translateY(14px) scale(0.98)}
-  to{opacity:1;transform:none}
-}
+.footer{width:100%;padding:1rem 2rem;border-top:1.5px solid #e8e0d0;background:#fff;display:flex;align-items:center;justify-content:space-between;font-size:0.72rem;color:#9a8e7e}
+@keyframes cardIn{from{opacity:0;transform:translateY(14px) scale(0.98)}to{opacity:1;transform:none}}
 .scene{animation:cardIn 0.35s ease both}
 </style>
 </head>
 <body>
-
 <div class="header">
   <div class="tagline">A1 / A2 &nbsp;·&nbsp; Sprechen</div>
   <h1>Sprechen<em>kartei</em></h1>
@@ -119,7 +71,6 @@ body{
     <div class="plabel" id="pl">0 / 25</div>
   </div>
 </div>
-
 <div class="main">
   <div class="scene" id="scene" onclick="flipCard()">
     <div class="inner" id="inner">
@@ -132,14 +83,12 @@ body{
       </div>
     </div>
   </div>
-
   <div class="controls">
     <button class="btn btn-sq" onclick="prev()">←</button>
     <button class="btn btn-main" onclick="next()">Weiter →</button>
     <button class="btn btn-sq" title="Mischen" onclick="doShuffle()">⇄</button>
   </div>
   <div class="dots" id="dots"></div>
-
   <div class="done" id="done">
     <div class="done-icon">✦</div>
     <div class="done-title">Alle Karten durch!</div>
@@ -147,12 +96,10 @@ body{
     <button class="btn btn-main" style="margin-top:0.5rem" onclick="restart()">Von vorne</button>
   </div>
 </div>
-
 <div class="footer">
   <span id="counter">Karte 1 von 25</span>
   <span>Deutsch Sprechen</span>
 </div>
-
 <script>
 const ALL=[
   {q:"Stell dich vor.",h:["Wie heißt du?","Wie alt bist du?","Woher kommst du?","Wo wohnst du?"]},
@@ -181,59 +128,34 @@ const ALL=[
   {q:"Sprichst du Deutsch jeden Tag?",h:["Wo?","Mit wem?"]},
   {q:"Verstehst du alles im Deutschkurs?",h:["Ja","Nein","ein bisschen"]},
 ];
-
 let deck=[...ALL],idx=0,flipped=false;
 function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b}
-
 function render(){
-  const done=document.getElementById("done");
-  const scene=document.getElementById("scene");
-  const ctrl=document.querySelector(".controls");
-  const dots=document.getElementById("dots");
-  if(idx>=deck.length){
-    done.classList.add("show");scene.style.display="none";
-    ctrl.style.display="none";dots.style.display="none";return;
-  }
-  done.classList.remove("show");scene.style.display="block";
-  ctrl.style.display="flex";dots.style.display="flex";
+  const done=document.getElementById("done"),scene=document.getElementById("scene"),ctrl=document.querySelector(".controls"),dots=document.getElementById("dots");
+  if(idx>=deck.length){done.classList.add("show");scene.style.display="none";ctrl.style.display="none";dots.style.display="none";return}
+  done.classList.remove("show");scene.style.display="block";ctrl.style.display="flex";dots.style.display="flex";
   const card=deck[idx];
-
   const qEl=document.getElementById("q");
-  if(Array.isArray(card.q)){
-    qEl.innerHTML=card.q[0]+'<br>'+card.q[1];
-  } else {
-    qEl.textContent=card.q;
-  }
-
+  Array.isArray(card.q)?qEl.innerHTML=card.q[0]+"<br>"+card.q[1]:qEl.textContent=card.q;
   document.getElementById("counter").textContent=`Karte ${idx+1} von ${deck.length}`;
   document.getElementById("pf").style.width=Math.round((idx/deck.length)*100)+"%";
   document.getElementById("pl").textContent=`${idx} / ${deck.length}`;
   document.getElementById("hints").innerHTML=card.h.map(h=>`<div class="hint-chip">${h}</div>`).join("");
-  document.getElementById("inner").classList.remove("flip");
-  flipped=false;
+  document.getElementById("inner").classList.remove("flip");flipped=false;
   scene.style.animation="none";void scene.offsetWidth;scene.style.animation="cardIn 0.35s ease both";
   buildDots();
 }
-
 function buildDots(){
   const el=document.getElementById("dots");el.innerHTML="";
   const max=Math.min(deck.length,15);
-  for(let i=0;i<max;i++){
-    const d=document.createElement("div");
-    d.className="dot"+(i===idx?" on":"");
-    const j=i;d.onclick=()=>{idx=j;render()};
-    el.appendChild(d);
-  }
+  for(let i=0;i<max;i++){const d=document.createElement("div");d.className="dot"+(i===idx?" on":"");const j=i;d.onclick=()=>{idx=j;render()};el.appendChild(d);}
 }
-
 function flipCard(){flipped=!flipped;document.getElementById("inner").classList.toggle("flip",flipped)}
 function next(){if(idx<deck.length)idx++;render()}
 function prev(){if(idx>0)idx--;render()}
 function doShuffle(){deck=shuffle([...ALL]);idx=0;render()}
 function restart(){deck=shuffle([...ALL]);idx=0;render()}
-
-deck=shuffle([...ALL]);
-render();
+deck=shuffle([...ALL]);render();
 </script>
 </body>
 </html>
